@@ -3,14 +3,12 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="#">
+        <a class="nav-link " href="{{url('dashboard')}}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
-
-      
-    
+       
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#tables-nav" href="{{ route('category.list') }}">
           <i class="bi bi-layout-text-window-reverse"></i><span>Categories</span>
@@ -44,6 +42,10 @@
         <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#tables-nav" href="#">
           <i class="bi bi-layout-text-window-reverse"></i><span>Business settings</span>
+        </a>
+        <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" href="{{ route('admin.login') }}">
+          <i class="bi bi-layout-text-window-reverse"></i><span>login</span>
         </a>
     </ul>
 

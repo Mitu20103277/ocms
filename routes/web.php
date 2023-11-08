@@ -6,6 +6,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,8 +18,14 @@ use App\Http\Controllers\OrderController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/admin/login',[UserController::class,'loginform'])->name('admin.login');
+Route::post('/admin/login-form-post',[UserController::class,'loginpost'])->name('login.post');
 
-Route::get('/',[HomeController::class,'home']);
+
+
+Route::group(['middleware'=> 'auth'],function(){
+
+Route::get('/',[HomeController::class,'home'])->name('dashboard');
 
 
 
@@ -40,3 +48,4 @@ Route::post('/order/store',[OrderController::class,'store'])->name('order.store'
 
 
 
+});
