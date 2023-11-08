@@ -37,6 +37,10 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
+
+  <!-- Toastr -->
+  <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css"> 
 </head>
 
 <body>
@@ -89,6 +93,12 @@
 
   <!-- Template Main JS File -->
   <script src="{{asset('backend')}}/js/main.js"></script>
+
+
+  <!-- Toastr -->
+  <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+  <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+        {!! Toastr::message() !!}
 
 </body>
 
