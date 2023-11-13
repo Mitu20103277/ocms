@@ -15,7 +15,7 @@ class UserController extends Controller
     }
   
   public function loginpost(Request $request){
-    // dd($request->all());
+    
     $validator= Validator::make($request->all(),[
         'email'=>'required|email',
         'password'=>'required|min:6',
