@@ -24,18 +24,9 @@
         <input reqired type="enter category price" class="form-control" id="category" name="category_name">
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">upload image</label>
-        <input type="file" class="form-control" id="exampleInputPassword1" name="enter_image">
-      </div><br>
-      <div class="form-group">
         <label for="exampleInputPassword1">Description</label><br>
         <textarea class="form-control" name="description" rows="4" cols="50"></textarea>
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Comment</label>
-        <input reqired type="text" class="form-control" id="exampleInputPassword1" name="comment">
-      </div><br>
-  
+     
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 

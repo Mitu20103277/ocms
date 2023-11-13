@@ -20,14 +20,16 @@ public function foodstore(request $request){
     //dd($request->all());
     $request->validate([
            'food_name' =>'required',
-           'food_type' =>'required',
-           'food_category' =>'required',
+           'enter_category' =>'required',
+           'enter_price' =>'required',
+           'enter_image' =>'required'
     ]);
 
     Food ::create([
         'food_name'=>$request->food_name,
-       'food_type'=>$request->food_type,
-        'food_category'=>$request->food_category,
+        'food_category'=>$request->enter_category,
+         'price'=>$request->enter_price,
+         'image'=>$request->enter_image,
     ]);
     return redirect()->route('food.list');
 

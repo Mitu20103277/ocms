@@ -42,8 +42,28 @@ class UserController extends Controller
   public function logout()
   {
     Auth::logout();
-    Toastr::success('successfylly logout');
+    Toastr::success('successfully logout');
     return redirect()->route('admin.login');
   }
 
-} 
+
+  public function list()
+  {
+    return view('Admin.pages.user.list');
+  }
+   
+  public function createform()
+  {
+    return view('Admin.pages.user.create');
+  }
+   public function store(){
+
+    
+
+   }
+}
+
+   
+
+
+

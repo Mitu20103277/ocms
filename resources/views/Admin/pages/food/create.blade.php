@@ -9,14 +9,17 @@
     <input type="text" class="form_contol" id="food" name="food_name">
     </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">Food_type</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" name="food_type">
-  </div><br>
-  <div class="form-group">
     <label for="exampleInputPassword1">Food_category</label><br>
-    <textarea class="form-control" id="category" name="food_category" rows="4" cols="50"></textarea>
+    <input type="text" class="form_control" id="category" name="enter_category">
   </div>
- 
+  <div class="form-group">
+    <label for="">price</label><br>
+    <input type="text" class="form_control" id="category" name="enter_price">
+  </div>
+  <div class="form-group">
+    <label for="">image</label><br>
+    <input type="file" class="form_control" id="" name="enter_image">
+  </div>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

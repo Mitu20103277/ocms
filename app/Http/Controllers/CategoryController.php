@@ -20,7 +20,7 @@ class CategoryController extends Controller
         $validate=Validator::make($request->all(),[
            'category_name'=>'required',
            'description'=>'required',
-           'comment'=>'required'
+           
            //field name
         ]);
                
@@ -30,8 +30,7 @@ class CategoryController extends Controller
              Category::create([
               'Category_name'=>$request->category_name,
                'description'=>$request->description,
-               'comments'=>$request->comment,
-
+             
             ]);
             return redirect()->back();
 

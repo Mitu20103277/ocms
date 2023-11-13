@@ -28,8 +28,11 @@ Route::group(['prefix'=> 'amdin'], function () {
 
     
     Route::get('/logout',[UserController::class,'logout'])->name('admin.logout');
-        
     Route::get('/',[HomeController::class,'home'])->name('dashboard');
+    
+    Route::get('/users',[UserController::class,'list'])->name('users.list');
+    Route::get('/users/create',[UserController::class,'createform'])->name('users.create');
+    Route::post('/user/store',[UserController::class,'store'])->name('user.store');
     
     Route::get('/category/list',[CategoryController::class,'list'])->name('category.list');
     Route::get('/category/create',[CategoryController::class,'create'])->name('category.create');
