@@ -3,11 +3,12 @@
 
    <h1>Create Food</h1>
    <hr>
-<form action="{{ route('food.store')}}"  method="post"  enctype="multipart/form-data">
+<form action=""  method=""  enctype="">
     @csrf
+    @method('put')
 <div class="form-group">
     <label for="exampleInputEmail1"> Food_name</label><br>
-    <input type="text" class="form-control" id="food" name="food_name">
+    <input type="text" class="form-control" id="food" name="food_name" value="{{$food->food_name}}">
     </div>
     <div class="form-group">
     <label for="exampleInputEmail1">category</label><br>
@@ -19,7 +20,7 @@
     </div>
   <div class="form-group">
     <label for="">price</label><br>
-    <input type="text" class="form-control" id="category" name="enter_price">
+    <input type="text" class="form-control" id="category" name="enter_price" value="{{$food->price}}">
   </div>
 <div class="form-group">
     <label for="">image</label><br>

@@ -2,11 +2,11 @@
 @section('content')
 
 
-<form  action="{{route('user.store')}}"  method="post" enctype="multipart/form-data">
+<form  action=""  method="post" enctype="multipart/form-data">
     @csrf
   <div class="form-group">
     <label for="">Enter User Name</label>
-    <input required type="text" class="form-control" id="" placeholder="Enter name"  name="user_name">
+    <input required type="text" class="form-control" id="" placeholder="Enter name"  name="user_name" value="{{$user->name}}">
     @error('user_name')
     <div class="alert alert-danger">{{ $message}}</div>
     @enderror
@@ -14,14 +14,14 @@
      
      <div class="form-group">
     <label for="">  Select Role</label>
-    <select required class="form-control" id="" placeholder=" "  name="role">
+    <select required class="form-control" id="" placeholder=" "  name="role" value="{{$user->role}}">
       <option value="manager">manager</option>
     </select>
      </div>
 
      <div class="form-group">
     <label for="">User Email</label>
-    <input required type="text" class="form-control" id="" placeholder="Enter mail"  name="enter_email">
+    <input required type="text" class="form-control" id="" placeholder="Enter mail"  name="enter_email" value="{{$user->email}}">
     @error('enter_email')
     <div class="alert alert-danger">{{ $message}}</div>
     @enderror

@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Food;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Validator;
 class CategoryController extends Controller
 {
@@ -12,7 +16,7 @@ class CategoryController extends Controller
       // dd($Categories);
         return view('Admin.pages.Category.list',compact('Categories'));
     }
-    public function create(){
+     public function create(){
         return view('Admin.pages.category.create');
     }
     public function store(Request $request){
@@ -32,8 +36,40 @@ class CategoryController extends Controller
                'description'=>$request->description,
              
             ]);
-            return redirect()->back();
+            return redirect()->route('category.list');
 
     }
+   public function edit($id){
+      
+      $category=Category::find($id);
+      return view('Admin.pages.Category.edit',compact('category'));
+
+      
+
+   } 
+
+public function update(Request $request, $id){
+
+   $validate=Validator::make($request->all(),[
+      'category_name'=>'required',
+      'description'=>'required',
+      
+      //field name
+   ]);
+
+      $category=Category::find($id);
+        $category->update([
+         'Category_name'=>$request->category_name,
+          'description'=>$request->description,
+        
+       ]);
+       Toastr::success('Category','category successfully created.');
+       return redirect()->route('category.list');
+}
+    public function delete($id){
+      Category::destroy($id);
+      return redirect()->back();
+}
+
     
 }

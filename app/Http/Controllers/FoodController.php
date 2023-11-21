@@ -2,37 +2,97 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Food;
 use Illuminate\Http\Request;
 
 class FoodController extends Controller
 {
-public function foodList(){
-    $foods=Food ::all();
-    //dd($Foods);
-    return view('Admin.pages.food.list', compact('foods'));
-     }
-       public function foodCreate(){
+  public function foodList()
+  {
+    $foods=Food::with('category')->get();
+     
+  return view('Admin.pages.food.list', compact('foods'));
+  }
+public function foodCreate()
+{
 
-    return view('Admin.pages.food.create');
+  $categories= Category::all();
+    return view('Admin.pages.food.create', compact('categories'));
 }
+
+
+   
 public function foodstore(request $request){
-    //dd($request->all());
+      //  dd($request->all());
     $request->validate([
            'food_name' =>'required',
-           'enter_category' =>'required',
+           'category_id' =>'required',
            'enter_price' =>'required',
            'enter_image' =>'required'
     ]);
 
-    Food ::create([
+    
+    $fileName=null;
+    if($request->hasFile('enter_image'))
+    {
+        $file=$request->file('enter_image');
+        $fileName=date('Ymdhis').'.'.$file->getClientOriginalExtension();
+       
+        $file->storeAs('/uploads',$fileName);
+
+    }
+
+
+      Food::create([
         'food_name'=>$request->food_name,
-        'food_category'=>$request->enter_category,
+        'category_id'=>$request->category_id,
          'price'=>$request->enter_price,
-         'image'=>$request->enter_image,
+         'image'=>$fileName
     ]);
     return redirect()->route('food.list');
 
 
 }
+
+  public function edit($id){
+    $food=Food::find($id);
+    
+    $categories=Category::all();
+    return view('Admin.pages.food.edit', compact('food','categories'));
+  }
+  
+  public function update(Request $request,$id){
+   $food=Food::find($id);
+    if($food){
+     $fileName=$food->image;
+     if($request->hasFile('enter_image'))
+     {
+         $file=$request->file('enter_image');
+         $fileName=date('Ymdhis').'.'.$file->getClientOriginalExtension();
+        
+         $file->storeAs('/uploads',$fileName);
+ 
+     }
+     $food->update([
+      'food_name'=>$request->food_name,
+     'category_id'=>$request->category_id,
+      'price'=>$request->enter_price,
+      'image'=>$fileName
+     ]);
+    }
+  }
+  public function show($id){
+    dd($id);
+  }
+  public function delete($id){
+    dd($id);
+  }
+
+
+  
 }
+
+
+
+
