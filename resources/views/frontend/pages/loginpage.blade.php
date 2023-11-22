@@ -13,12 +13,12 @@
                     <form action="{{route('customer.dologin')}}" method="post">
                         @csrf
                         <div class="mb-3">
-                            <label for="login">UserName:</label>
-                            <input type="email" name="email" class="form-control" placeholder="write username" id="login" >
+                            <label for="exampleInputEmail1">Email Address</address></label>
+                            <input required type="email" name="email" class="form-control" placeholder="Enter email" id="exampleInputEmail1" >
                         </div>
                         <div class="mb-3">
                             <label for="password">Password:</label>
-                            <input type="password" name="password" class="form-control" placeholder="password" id="password">
+                            <input required type="password" name="password" class="form-control" placeholder="password" id="password">
                         </div>
                         <!-- Button trigger modal -->
                         

@@ -3,9 +3,9 @@
 
    <h1>Create Food</h1>
    <hr>
-<form action=""  method=""  enctype="">
+<form action="{{route('food.update',$food->id)}}"  method="post">
     @csrf
-    @method('put')
+  
 <div class="form-group">
     <label for="exampleInputEmail1"> Food_name</label><br>
     <input type="text" class="form-control" id="food" name="food_name" value="{{$food->food_name}}">
@@ -24,9 +24,9 @@
   </div>
 <div class="form-group">
     <label for="">image</label><br>
-    <input type="file" class="form-control" name="enter_image">
+    <input type="file" class="form-control" name="enter_image"  >
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Update</button>
 </form>
 
 

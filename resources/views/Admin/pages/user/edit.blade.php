@@ -39,7 +39,7 @@
 
      <div class="form-group">
      <label for="">upload image</label>
-    <input type="file" class="form-control"  name="user_image">
+    <input type="file" class="form-control"  name="user_image" value="user_image">
     </div>
    
     

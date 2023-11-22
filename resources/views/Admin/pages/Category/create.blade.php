@@ -17,7 +17,7 @@
 <hr>
 <div class="card">
   <div class="card-body">
-    <form action="{{ route('category.store') }}" method="post">
+    <form action="{{}}" method="post">
       @csrf
       <div class="form-group">
         <label for="exampleInputEmail1">Enter category name</label><br>

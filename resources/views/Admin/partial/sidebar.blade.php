@@ -49,7 +49,10 @@
           <i class="bi bi-layout-text-window-reverse"></i><span>user</span>
         </a>
 
-
+        <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" href="{{route('customer.list')}}">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Customer</span>
+        </a>
     </ul>
 
   </aside>

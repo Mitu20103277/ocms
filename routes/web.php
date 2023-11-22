@@ -9,6 +9,7 @@ use App\Http\Controllers\PackageController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WebController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,23 +23,28 @@ use App\Http\Controllers\WebController;
 */
 
 Route::get('/',[WebController::class,'home'])->name('home');
-Route::get('/login',[CustomerController::class,'loginPage'])->name('customer.login');
-Route::post('/do-login',[CustomerController::class,'login'])->name('customer.dologin');
+Route::get('/foods',[WebController::class,'food'])->name('home.food');
+
 Route::get('/register',[CustomerController::class,'registerPage'])->name('customer.register');
 Route::post('/do-register',[CustomerController::class,'doregister'])->name('customer.doregister');
+
+Route::get('/login',[CustomerController::class,'loginPage'])->name('customer.login');
+Route::post('/do-login',[CustomerController::class,'login'])->name('customer.dologin');
 
 Route::get('/admin/login',[UserController::class,'loginform'])->name('admin.login');
 Route::post('/admin/do-login',[UserController::class,'loginpost'])->name('login.post');
 
 
-Route::group(['prefix'=> 'amdin'], function () {
+   Route::group(['prefix'=> 'amdin'], function () {
+
+  
 
     Route::group(['middleware'=> 'auth'],function(){
 
     
     Route::get('/logout',[UserController::class,'logout'])->name('admin.logout');
     Route::get('/',[HomeController::class,'home'])->name('dashboard');
-
+    
 
     
     Route::get('/users',[UserController::class,'list'])->name('users.list');
@@ -65,7 +71,7 @@ Route::group(['prefix'=> 'amdin'], function () {
    
     Route::get('/food/edit/{id}',[FoodController::class,'edit'])->name('food.edit');
    
-    Route::put('/food/update/{id}',[FoodController::class,'update'])->name('food.update');
+    Route::post('/food/update/{id}',[FoodController::class,'update'])->name('food.update');
 
     Route::get('/food/show/{id}', [FoodController::class,'show'])->name('food.show');
 
@@ -83,6 +89,7 @@ Route::group(['prefix'=> 'amdin'], function () {
     Route::get('/order/create',[OrderController::class,'create'])->name('order.create');
     Route::post('/order/store',[OrderController::class,'store'])->name('order.store');
     
+    Route::get('/customer/list',[CustomerController::class,'customerlist'])->name('customer.list');
     
     
     });

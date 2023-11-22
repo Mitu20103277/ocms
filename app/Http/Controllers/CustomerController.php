@@ -38,10 +38,11 @@ class CustomerController extends Controller
         "password"=> bcrypt($request->password),
     
       ]);
+      
       Toastr::success("successfully register");
 
       return redirect()->route('customer.login');
-
+       
     }
    
    
@@ -68,6 +69,7 @@ class CustomerController extends Controller
           
             Toastr::success("successfully login" ,"Customer");
             return view("frontend.pages.login");
+            return redirect()->route('home');
         }
             
         Toastr::error('Invalid user');
@@ -81,7 +83,11 @@ class CustomerController extends Controller
         return redirect()->route('home.page');
     } */
 
-   
-  
+   public function customerlist(){
 
+    $customers=Customer::all();
+    return view('Admin.pages.customer.customerlist',compact('customers'));
+   }
+  
+   
 }
