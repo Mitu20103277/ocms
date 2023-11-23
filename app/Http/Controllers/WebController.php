@@ -14,12 +14,11 @@ class WebController extends Controller
         return view('frontend.pages.home', compact('foods'));
     }
     
-   // public function food(){
-        
-    
-        //dd($foods);
-       // return view('frontend.pages.home',compact('foods'));
-   // }
+   public function food(){
+        $foods=Food::all();
+        // dd($foods);
+       return view('frontend.pages.category',compact('foods'));
+   }
    
 
 

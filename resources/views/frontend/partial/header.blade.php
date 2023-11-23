@@ -7,48 +7,34 @@
       <a href="index.html" class="logo d-flex align-items-center me-auto me-lg-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1>Yummy<span>.</span></h1>
+        <h1>Catering Management Systems</h1>
       </a>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#menu">Menu</a></li>
+          <li><a href="{{route('home')}}">Home</a></li>
           <li><a href="">Categories</a></li>
+          <li><a href="">Foods</a></li>
           <li><a href="">Packages</a></li>
-          <li><a href="">order</a></li>
-          <li><a href="">payment</a></li>
-          <li><a href="">company/officer</a></li>
-          <li><a href="">Contact</a></li>
+
+          
+          
         </ul>
       </nav><!-- .navbar -->
-      <a class="btn-book-a-table" href="#book-a-table">Book a Order</a>
-      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
       
     </div>
-   <div class="user">
-        <a style="margin-right: 10px;" href="{{ route('customer.login') }}">Login</a>|
+    <div class="ùser">
+      
+      @if (auth('customer')->user())   
 
+        <li style="list-style: none; margin-right: 20px;">{{auth('customer')->user()->full_name}}</li>
+         <a style="margin-right: 20px;" href="{{route('customer.logout')}}">Logout</a>
+      @else
 
+      <a style="margin-right: 10px;" href="{{ route('customer.login') }}">Login</a>|
+      <a style="margin-right: 20px;" href="{{ route('customer.register') }}">Register</a>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-        <a style="margin-right: 20px;" href="{{ route('customer.register') }}">Register</a>
+      @endif
    </div>
 
    

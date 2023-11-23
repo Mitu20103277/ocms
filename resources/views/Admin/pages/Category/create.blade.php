@@ -1,23 +1,11 @@
 @extends('Admin.master')
 @section('content')
 
-
-
-
-
-@if(Session::has('success'))
-<div class="alert alert-success">
-  {{ Session::get('success') }}
-  @php
-  Session::forget('success');
-  @endphp
-</div>
-@endif
 <h1 class="text-center"><Strong>Create Category</Strong></h1>
 <hr>
 <div class="card">
   <div class="card-body">
-    <form action="{{}}" method="post">
+    <form action="{{route('category.store')}}" method="post">
       @csrf
       <div class="form-group">
         <label for="exampleInputEmail1">Enter category name</label><br>

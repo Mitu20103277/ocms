@@ -30,6 +30,7 @@ Route::post('/do-register',[CustomerController::class,'doregister'])->name('cust
 
 Route::get('/login',[CustomerController::class,'loginPage'])->name('customer.login');
 Route::post('/do-login',[CustomerController::class,'login'])->name('customer.dologin');
+Route::get('/logout',[CustomerController::class,'logout'])->name('customer.logout');
 
 Route::get('/admin/login',[UserController::class,'loginform'])->name('admin.login');
 Route::post('/admin/do-login',[UserController::class,'loginpost'])->name('login.post');

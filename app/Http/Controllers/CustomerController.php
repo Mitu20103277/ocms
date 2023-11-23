@@ -29,24 +29,17 @@ class CustomerController extends Controller
             Toastr::error($validate->getMessageBag());
             return redirect()->back();
         }
-       
-        // dd($otp);
+
       $customer=Customer::create([
         "first_name"=> $request->fname,
         "last_name"=> $request->lname,
         "email"=> $request->email,
         "password"=> bcrypt($request->password),
-    
       ]);
-      
       Toastr::success("successfully register");
 
-      return redirect()->route('customer.login');
-       
+      return redirect()->route('customer.login');  
     }
-   
-   
-
     public function loginPage()
     {
         return view("frontend.pages.loginPage");
@@ -64,27 +57,20 @@ class CustomerController extends Controller
         }
         $customer=$request->except("_token");
         // dd($customer);
-        if(auth()->guard("customer")->attempt($customer)){
-           
-          
-            Toastr::success("successfully login" ,"Customer");
-            return view("frontend.pages.login");
+        if(auth()->guard("customer")->attempt($customer)){ 
+            Toastr::success("successfully login","Customer");
             return redirect()->route('home');
-        }
-            
+        } 
         Toastr::error('Invalid user');
         return redirect()->back();
-        
     }
-   /*  public function logout()
-    {
+    public function logout(){
         Auth::guard('customer')->logout();
         Toastr::success('successfully logout','Customer');
-        return redirect()->route('home.page');
-    } */
+        return redirect()->route('home');
+    }
 
    public function customerlist(){
-
     $customers=Customer::all();
     return view('Admin.pages.customer.customerlist',compact('customers'));
    }

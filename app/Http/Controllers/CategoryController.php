@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Models\Food;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Validator;
 class CategoryController extends Controller
 {
@@ -27,8 +24,10 @@ class CategoryController extends Controller
            
            //field name
         ]);
-               
-               
+        if($validate->fails()){
+         Toastr::error($validate->getMessageBag()->first());
+         return redirect()->back();
+        }
 
                //db colomn name form field name  
              Category::create([
@@ -36,6 +35,7 @@ class CategoryController extends Controller
                'description'=>$request->description,
              
             ]);
+            Toastr::success('category successfully created.');
             return redirect()->route('category.list');
 
     }
@@ -63,11 +63,12 @@ public function update(Request $request, $id){
           'description'=>$request->description,
         
        ]);
-       Toastr::success('Category','category successfully created.');
+       Toastr::success('Category','category successfully updated.');
        return redirect()->route('category.list');
 }
     public function delete($id){
       Category::destroy($id);
+      toastr()->error('category succssfully deleted.');
       return redirect()->back();
 }
 
