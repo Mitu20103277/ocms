@@ -9,6 +9,7 @@
       <th scope="col">#</th>
       <th scope="col">Package Name</th>
       <th scope="col">Package Price</th>
+      <th scope="col">Package Image</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -18,7 +19,9 @@
      <td>{{ $id+1 }}</td>
      <td>{{ $value->name }}</td>
      <td>{{ $value->price}}</td>
-  
+     <td> {{$$value->image}}</td>
+        <img width="60" height="60" src="{{url('/uploads/'.$value->image)}}" alt="image"></td>
+      <td>
 
      <td>
        <div class="btn btn-primary">show</div>

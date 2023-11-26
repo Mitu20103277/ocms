@@ -23,11 +23,22 @@ class PackageController extends Controller
          'price'=>'required',
          
     ]);
+
+    $fileName=null;
+    if($request->hasFile('enter_image'))
+    {
+        $file=$request->file('enter_image');
+        $fileName=date('Ymdhis').'.'.$file->getClientOriginalExtension();
+       
+        $file->storeAs('/uploads',$fileName);
+
+    }
+       
        Package::create([
 
         'name'=>$request->name,
         'price'=>$request->price,
-
+        'image'=>$request->image
 
 
        ]);

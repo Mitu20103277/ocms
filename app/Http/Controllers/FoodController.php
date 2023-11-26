@@ -86,7 +86,7 @@ public function foodstore(request $request){
     dd($id);
   }
   public function delete($id){
-    dd($id);
+    Food::find($id)->delete();
   }
 
 

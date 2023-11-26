@@ -15,7 +15,7 @@
           <li><a href="{{route('home')}}">Home</a></li>
           <li><a href="">Categories</a></li>
           <li><a href="">Foods</a></li>
-          <li><a href="">Packages</a></li>
+          <li><a href="{{route('home.package')}}">Packages</a></li>
 
           
           

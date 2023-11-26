@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\FoodController;
+use App\Http\Controllers\FrontendpackageController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
@@ -25,12 +26,15 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 Route::get('/',[WebController::class,'home'])->name('home');
 Route::get('/foods',[WebController::class,'food'])->name('home.food');
 
+Route::get('/package',[WebController::class,'package'])->name('home.package');
 Route::get('/register',[CustomerController::class,'registerPage'])->name('customer.register');
 Route::post('/do-register',[CustomerController::class,'doregister'])->name('customer.doregister');
 
 Route::get('/login',[CustomerController::class,'loginPage'])->name('customer.login');
 Route::post('/do-login',[CustomerController::class,'login'])->name('customer.dologin');
 Route::get('/logout',[CustomerController::class,'logout'])->name('customer.logout');
+
+
 
 Route::get('/admin/login',[UserController::class,'loginform'])->name('admin.login');
 Route::post('/admin/do-login',[UserController::class,'loginpost'])->name('login.post');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Food;
+use App\Models\Package;
 use Illuminate\Http\Request;
 
 class WebController extends Controller
@@ -20,7 +21,10 @@ class WebController extends Controller
        return view('frontend.pages.category',compact('foods'));
    }
    
-
+   public function package(){
+       $packages=package::all();
+    return view('frontend.pages.package',compact('packages'));
+   }
 
 
 }
