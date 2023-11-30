@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Food;
+use App\Models\Package;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 class AppServiceProvider extends ServiceProvider
@@ -22,5 +23,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $foods=Food::all();
         view::share('foods',$foods);
+        $packages=Package::all();
+        view::share('packages', $packages);
     }
 }

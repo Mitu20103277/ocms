@@ -32,6 +32,7 @@ class WebController extends Controller
 
    public function package(){
        $packages=package::all();
+    //    dd($packages);
     return view('frontend.pages.package',compact('packages'));
    }
 

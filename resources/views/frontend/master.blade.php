@@ -71,6 +71,8 @@
 
       
       @include('frontend.pages.food')
+
+      @include('frontend.pages.package')
     
 
   </main><!-- End #main -->
