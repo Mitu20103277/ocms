@@ -17,7 +17,7 @@ class PackageController extends Controller
     }
     public function store(request $request){
     
-    
+    // dd($request->all());
        $request->validate([
         'name'=>'required',
          'price'=>'required',
@@ -25,9 +25,9 @@ class PackageController extends Controller
     ]);
 
     $fileName=null;
-    if($request->hasFile('enter_image'))
+    if($request->hasFile('image'))
     {
-        $file=$request->file('enter_image');
+        $file=$request->file('image');
         $fileName=date('Ymdhis').'.'.$file->getClientOriginalExtension();
        
         $file->storeAs('/uploads',$fileName);
@@ -38,7 +38,7 @@ class PackageController extends Controller
 
         'name'=>$request->name,
         'price'=>$request->price,
-        'image'=>$request->image
+        'image'=>$fileName
 
 
        ]);

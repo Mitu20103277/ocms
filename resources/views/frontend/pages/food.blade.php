@@ -2,10 +2,13 @@
     <h1 class="text-center"><b>All Foods</b></h1>
     <hr>
     <div class="row mb-3">
+        
         @foreach ($foods as $food)
        
         <div class="col-md-3">
             <div class="card" style="width: 18rem;">
+            
+            <a href="{{route('single.food',$food->id)}}">
                 <img src="{{ url('/uploads/',$food->image) }}" alt="image">
                 <div class="card-body">
                     <p class="card-text">{{ $food->food_name }}</p>

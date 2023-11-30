@@ -1,8 +1,11 @@
+
+
 <div class="container mt-5 mb-5">
-    <h1 class="text-center"><b>All Packages</b></h1>
+    <h1 class="text-center"><b>All packages</b></h1>
     <hr>
     <div class="row mb-3">
-        @foreach ($packages as $package)
+
+         @foreach($packages as $package )
        
         <div class="col-md-3">
             <div class="card" style="width: 18rem;">
@@ -13,6 +16,6 @@
                 </div>
                 </div>
             </div>
-            @endforeach
+         @endforeach
     </div>
 </div>

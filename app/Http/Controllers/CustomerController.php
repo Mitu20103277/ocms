@@ -45,7 +45,7 @@ class CustomerController extends Controller
         return view("frontend.pages.loginPage");
     }
     public function login(Request $request)
-    {
+    { 
         $validate=validator::make($request->all(), [
             "email"=> "required",
             "password"=> "required|min:4",
@@ -56,7 +56,7 @@ class CustomerController extends Controller
             return redirect()->back();  
         }
         $customer=$request->except("_token");
-        // dd($customer);
+        //  dd($customer);
         if(auth()->guard("customer")->attempt($customer)){ 
             Toastr::success("successfully login","Customer");
             return redirect()->route('home');
@@ -64,6 +64,11 @@ class CustomerController extends Controller
         Toastr::error('Invalid user');
         return redirect()->back();
     }
+     public function profile(){
+          return view('frontend.pages.profile');
+
+
+     }
     public function logout(){
         Auth::guard('customer')->logout();
         Toastr::success('successfully logout','Customer');

@@ -23,7 +23,7 @@
       <td>{{$key+1}}</td>
       <td>{{$singleuser->name}}</td>
        <td>  
-        <img width="60" height="60" src="{{url('/uploads/'.$singleuser->image)}}" alt="">
+        <img width="60" height="60" src="{{url('/uploads/'.$singleuser->image)}}" alt="image">
       </td>
       <td>{{$singleuser->role}}</td>
       <td>{{$singleuser->email}}</td>

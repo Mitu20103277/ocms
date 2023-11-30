@@ -25,7 +25,7 @@
       <td>{{$value->category->category_name}}</td>
       <td>{{$value->price}}</td>
       <td> 
-        <img width="60" height="60" src="{{url('/uploads/'.$value->image)}}" alt="image"></td>
+        <a href=""><img width="60" height="60" src="{{url('/uploads/'.$value->image)}}" alt="image"></a></td>
       <td>
         
         <a class="btn btn-primary" href="">show</a>

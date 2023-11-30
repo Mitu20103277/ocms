@@ -1,7 +1,8 @@
 @extends('Admin.master')
 @section('content')
-
-<form action="{{route('package.store')}}" method="post">
+ 
+<hr>
+<form action="{{route('package.store')}}" method="post" enctype="multipart/form-data">
   @csrf
   
   <div class="form-group">

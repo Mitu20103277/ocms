@@ -2,7 +2,7 @@
 @section('content')
 
 
-<form  action=""  method="post" enctype="multipart/form-data">
+<form  action=""  method="post" >
     @csrf
   <div class="form-group">
     <label for="">Enter User Name</label>

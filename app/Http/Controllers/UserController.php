@@ -51,7 +51,7 @@ class UserController extends Controller
   public function list()
   {
     $users= User::all();
-    return view('Admin.pags.user.list',compact('users'));
+    return view('Admin.pages.user.list',compact('users'));
   }
    
   public function createform()

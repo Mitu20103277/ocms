@@ -21,6 +21,15 @@ class WebController extends Controller
        return view('frontend.pages.category',compact('foods'));
    }
    
+
+   public function singlefoodview($foodId){
+    $singlefood= Food::find($foodId);
+      return view('frontend.pages.foodview',compact('singlefood'));
+
+   }
+
+
+
    public function package(){
        $packages=package::all();
     return view('frontend.pages.package',compact('packages'));

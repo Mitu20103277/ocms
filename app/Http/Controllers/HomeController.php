@@ -9,6 +9,6 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function home(){
-        return view('Admin.master');
+        return view('Admin.pages.dashboard.list');
     }
 }
