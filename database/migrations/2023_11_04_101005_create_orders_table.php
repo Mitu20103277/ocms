@@ -13,9 +13,15 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('order_name');
-            $table->string('status');
-            $table->string('track');
+            $table->foreignId('user_id')->constrained();
+            $table->string('status')->default('pending');
+            $table->double('total_price')->default(0.0);
+            $table->string('payment_method')->default('cod');
+            $table->string('address');
+            $table->string('receiver_mobile');
+            $table->string('receiver_name');
+            $table->string('receiver_email')->nullable();
+            $table->text('order_note')->nullable();
             $table->timestamps();
         });
     }

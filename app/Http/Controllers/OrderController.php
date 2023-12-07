@@ -3,34 +3,46 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use Brian2694\Toastr\Facades\Toastr;
+use App\Models\Orderdetails;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function list(){
-        $Orders=Order::all();
-        return view('Admin.pages.Order.list' ,compact('Orders')   );
-    }
-    public function create(){
-        return view('Admin.pages.Order.create');
-    }
+    public function orderPlace(Request $request){
 
-    public function store(Request $request){
-        $request->validate([
-            'order_name'=>'required',
-            'status'=>'required',
-            'track'=>'required',
-        ]);
+           //validation here
 
+           
+           $cart=session()->get('vcart');
         
-       Order::create([
-        'order_name'=>$request->order_name,
-         'status'=>$request->status,
-        'track'=>$request->track,
-        ]);
-       return redirect()->route('order.list');
+           
+          $Order=Order::create([
+           'user_id' =>auth()->user()->id,
+           'status'=>'pending',
+           'total_price'=>array_sum(array_column($cart,'subtotal')),
+           'address'=>$request->address,  
+           'receiver_mobile'=>$request->phone_number,
+           'receiver_name'=>$request->name,
+           'receiver_email'=>$request->email_address,
+           ]);
+    
+           //create order details
+        foreach($cart as $key=> $item)
+        {
+            Orderdetails::create([
+                'order_id'=>$Order->id,
+                // 'product_id'=>$key,
+                'food_id'=>$item['id'],
+                'quantity'=>$item['quantity'],
+                'subtotal'=>$item['subtotal'],
+            ]);
+        }
 
+        session()->forget('vcart');
+        Toastr::success('order placed success');
+        return redirect()->back();
 
 
 

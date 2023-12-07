@@ -1,4 +1,6 @@
+@extends('frontend.master')
 
+@section('content')
 <div class="container mt-5 mb-5">
     <h1 class="text-center"><b>All packages</b></h1>
     <hr>
@@ -15,6 +17,8 @@
                 </div>
                 </div>
             </div>
-         @endforeach
+        </div>
+       @endforeach
     </div>
 </div>
+@endsection

@@ -46,7 +46,7 @@
     @include('frontend.partial.header')
   <!-- End Header -->
 
-  @yield('content')
+
 
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="hero d-flex align-items-center section-bg">
@@ -61,7 +61,7 @@
           </div>
         </div>
         <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
-          <img src="assets/img/hero-img.png" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300">
+          <img src="{{ asset('frontend') }}/assets/img/hero-img.png" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300">
         </div>
       </div>
     </div>
@@ -69,11 +69,7 @@
 
   <main id="main">
 
-      
-      @include('frontend.pages.food')
-
-      @include('frontend.pages.package')
-    
+  @yield('content')
 
   </main><!-- End #main -->
 
@@ -85,7 +81,6 @@
 
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
   <script src="{{ asset('frontend') }}/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

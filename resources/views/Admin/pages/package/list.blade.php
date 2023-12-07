@@ -24,9 +24,9 @@
         <img width="60" height="60" src="{{url('/uploads/'.$value->image)}}" alt="image"></td>
       <td>
 
-        <div class="btn btn-primary">show</div>
-        <div  class="btn btn-danger">delete</div>
-        <div   class="btn btn-success">edit</div>
+        <a class="btn btn-primary">show</a>
+        <a class="btn btn-danger"  href="{{route('package.delete', $value->id)}}">delete</a>
+        <a  class="btn btn-success">edit</a>
      </td>
     </tr>
     @endforeach

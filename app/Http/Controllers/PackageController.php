@@ -45,8 +45,10 @@ class PackageController extends Controller
        return redirect()->route('package.list');
 
     }
-
-
-
+      public function delete($id){
+        Package::destroy($id);
+        toastr()->error('package succssfully deleted.');
+        return redirect()->back();
+      }
 
 }

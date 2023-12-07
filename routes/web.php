@@ -5,7 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\FoodController;
-use App\Http\Controllers\FrontendFoodController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\FrontendpackageController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\OrderController;
@@ -24,11 +24,25 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
+
+
+
 Route::get('/',[WebController::class,'home'])->name('home');
+
+Route::get('/search-foods',[WebController::class,'search'])->name('food.search');
+
+
+
 Route::get('/foods',[WebController::class,'food'])->name('home.food');
 Route::get('/singlefoodview/{id}',[WebController::class,'singlefoodview'])->name('single.food');
 Route::get('/singlepackages/{id}',[WebController::class,'singlepackage'])->name('single.package');
 Route::get('/package',[WebController::class,'package'])->name('home.package');
+
+Route::get('/cart-view',[CartController::class,'viewCart'])->name('cart.view');
+Route::get('/add-to-cart/{food_id}',[CartController::class,'addToCart'])->name('add.toCart');
+Route::get('/checkout',[CartController::class,'checkout'])->name('checkout');
+
+Route::post('/order-place',[OrderController::class, 'orderPlace'])->name('order.place');
 
 Route::get('/register',[CustomerController::class,'registerPage'])->name('customer.register');
 Route::post('/do-register',[CustomerController::class,'doregister'])->name('customer.doregister');
@@ -89,6 +103,7 @@ Route::post('/admin/do-login',[UserController::class,'loginpost'])->name('login.
 
     
     Route::get('/package/list',[PackageController::class,'List'])->name('package.list');
+    Route::get('/package/delete/{id}',[PackageController::class,'delete'])->name('package.delete');
     Route::get('/package/create',[PackageController::class,'Create'])->name('package.create');
     Route::post('/package/store',[PackageController::class,'store'])->name('package.store');
     

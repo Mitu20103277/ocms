@@ -15,6 +15,26 @@ class WebController extends Controller
         return view('frontend.pages.home', compact('foods'));
     }
     
+    public function search(Request $request)
+    {
+        // dd(request()->all())
+ 
+        if($request->search)
+        {
+            $foods=Food::where('name','LIKE','%'.$request->search.'%')->get();
+            //select * from food where name like %  %;
+        }else{
+            $foods=Food::all();
+        }
+       
+ 
+        
+        return view("frontend.pages.search",compact('foods'));
+    }
+          
+
+        
+
    public function food(){
         $foods=Food::all();
         // dd($foods);
@@ -27,7 +47,9 @@ class WebController extends Controller
       return view('frontend.pages.foodview',compact('singlefood'));
 
    }
+   
 
+  
 
 
    public function package(){
@@ -36,7 +58,7 @@ class WebController extends Controller
     return view('frontend.pages.package',compact('packages'));
    }
 
-
 }
+
 
 
