@@ -11,13 +11,13 @@
         </div>
 
         <div class="col-md-6 col-sm-6 col-xs-12 col-md-pull-6 col-sm-pull-6">
-            <!--delivery METHOD-->
+            <!--SHIPPING METHOD-->
             <div class="panel panel-info">
                 <div class="panel-heading">Address</div>
                 <div class="panel-body">
                     <div class="form-group">
                         <div class="col-md-12">
-                            <h4>Delivery Address</h4>
+                            <h4>Shipping Address</h4>
                         </div>
                     </div>
                     
@@ -63,7 +63,7 @@
                     </div>
                 </div>
             </div>
-           
+            <!--SHIPPING METHOD END-->
             <!--CREDIT CART PAYMENT-->
             <div class="panel panel-info">
                 

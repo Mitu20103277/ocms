@@ -33,7 +33,6 @@ class OrderController extends Controller
         {
             Orderdetails::create([
                 'order_id'=>$Order->id,
-                // 'product_id'=>$key,
                 'food_id'=>$item['id'],
                 'quantity'=>$item['quantity'],
                 'subtotal'=>$item['subtotal'],

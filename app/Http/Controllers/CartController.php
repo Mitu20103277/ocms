@@ -36,7 +36,7 @@ class CartController extends Controller
                 //add to cart
                 $cart[$pId]=[
                     'id'=>$pId,
-                    'name'=>$food->name,
+                    'name'=>$food->food_name,
                     'price'=>$food->price,
                     'quantity'=>1,
                     'subtotal'=>1 * $food->price,
@@ -54,7 +54,7 @@ class CartController extends Controller
             //add to cart
             $newCart[$pId]=[
                     'id'=>$pId,
-                    'name'=>$food->name,
+                    'name'=>$food->food_name,
                     'price'=>$food->price,
                     'quantity'=>1,
                     'subtotal'=>1 * $food->price,

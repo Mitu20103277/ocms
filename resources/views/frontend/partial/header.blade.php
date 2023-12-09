@@ -39,20 +39,20 @@
 
       
       
-      @if (auth('customer')->user())   
+                              @if (auth('customer')->user())   
 
-        <li style="list-style: none; margin-right: 20px;">{{auth('customer')->user()->full_name}}</li>
-        <a style="margin-right: 20px;" href="{{route('profile.view')}}">profile</a>
-         <a style="margin-right: 20px;" href="{{route('customer.logout')}}">Logout</a>
-      @else
+                             <li style="list-style: none; margin-right: 20px;">{{auth('customer')->user()->full_name}}</li>
+                             <a style="margin-right: 20px;" href="{{route('profile.view')}}">profile</a>
+                              <a style="margin-right: 20px;" href="{{route('customer.logout')}}">Logout</a>
+                              @else
 
-      <a style="margin-right: 10px;" href="{{ route('customer.login') }}">Login</a>|
+                                  <a style="margin-right: 10px;" href="{{ route('customer.login') }}">Login</a>|
       
       
-      <a style="margin-right: 20px;" href="{{ route('customer.register') }}">Register</a>
+                                <a style="margin-right: 20px;" href="{{ route('customer.register') }}">Register</a>
 
-      @endif
-   </div>
+                              @endif
+     </div>
 
    
   </header>

@@ -21,7 +21,7 @@ class WebController extends Controller
  
         if($request->search)
         {
-            $foods=Food::where('name','LIKE','%'.$request->search.'%')->get();
+            $foods=Food::where('food_name','LIKE','%'.$request->search.'%')->get();
             //select * from food where name like %  %;
         }else{
             $foods=Food::all();
