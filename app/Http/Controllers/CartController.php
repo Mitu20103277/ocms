@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Food;
+use App\Models\Package;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
@@ -72,9 +73,67 @@ class CartController extends Controller
     }
     public function checkout()
     {
+        
         return view('frontend.pages.checkout');
     }
+    
+     
+   
+    
+      public function addPackageCartItem($pId)
+    {
+        $package=Package::find($pId);
+
+        $cart=session()->get('vcart');
+        if($cart){//not empty
+
+            if(array_key_exists($pId,$cart)){//yes
+                //qty update
+                $cart[$pId]['quantity']=$cart[$pId]['quantity'] + 1;
+                $cart[$pId]['subtotal']=$cart[$pId]['quantity'] * $cart[$pId]['price'];
+
+            session()->put('vcart',$cart);
+            Toastr::success('package added to cart successfully . ');
+            return redirect()->back();
+
+
+            }else{//no
+                //add to cart
+                $cart[$pId]=[
+                    'id'=>$pId,
+                    'name'=>$package->name,
+                    'price'=>$package->price,
+                    'quantity'=>1,
+                    'subtotal'=>1 * $package->price,
+            ];
+
+            session()->put('vcart',$cart);
+            Toastr::success('package added to cart succesfully .');
+            return redirect()->back();
+
+            }
+
+            return redirect()->back();
+
+        }else{//empty
+            //add to cart
+            $newCart[$pId]=[
+                    'id'=>$pId,
+                    'name'=>$package->name,
+                    'price'=>$package->price,
+                    'quantity'=>1,
+                    'subtotal'=>1 * $package->price,
+            ];
+
+            session()->put('vcart',$newCart);
+           Toastr::success('package added to cart succesfully .');
+            return redirect()->back();
+
+        }
+
+
+
 
 
 }
-
+}

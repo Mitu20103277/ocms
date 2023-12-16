@@ -26,7 +26,7 @@
                         <div class="span1"></div>
                         <div class="col-md-6 col-xs-12">
                             <strong> Name:</strong>
-                            <input type="text" name="name" class="form-control" value="{{auth()->user()->name}}" />
+                            <input type="text" name="name" class="form-control" value="{{auth('customer')->user()->name}}" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -59,7 +59,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-12"><strong>Email Address:</strong></div>
-                        <div class="col-md-12"><input type="text" name="email_address" class="form-control" value="{{auth()->user()->email}}" /></div>
+                        <div class="col-md-12"><input type="text" name="email_address" class="form-control" value="{{auth('customer')->user()->email}}" /></div>
                     </div>
                 </div>
             </div>

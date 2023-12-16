@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('orderdetails', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id');
-            $table->foreignId('food_id')->constrained('foods');
+             $table->integer('order_id');
+             $table->integer('food_id');
+             $table->string('food_name');
             $table->integer('quantity');
             $table->double('subtotal');
             $table->timestamps();

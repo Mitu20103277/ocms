@@ -2,35 +2,40 @@
 @section('content')
 
 
-<a class="btn btn-primary" href="{{ route('package.create') }} "> create package</a>
+<a class="btn btn-primary" href="{{ route('food.create') }}">Create new package</a>
 <table class="table">
-  <thead class="thead-dark">
+
+  <thead>
+
     <tr>
+
       <th scope="col">Id</th>
-      <th scope="col">Package Name</th>
-      <th scope="col">Package Price</th>
-      <th scope="col">Package Image</th>
+      <th scope="col">Food Name</th>
+      <th scope="col">Type</th>
+      <th scope="col">price</th>
+      <th scope="col">Image</th>
       <th scope="col">Action</th>
     </tr>
-  
+
   </thead>
   <tbody>
     @foreach($packages as $id=>$value)
-     <tr>
-     <td>{{$id+1 }}</td>
-     <td>{{$value->name }}</td>
-     <td>{{$value->price}}</td>
+    <tr>
+      <td> {{$id+1}}</td>
+      <td>{{$value->food_name}}</td>
+      <td>{{$value->type}}</td>
+      <td>{{$value->price}}</td>
+      <td> 
+        <a href=""><img width="60" height="60" src="{{url('/uploads/'.$value->image)}}" alt="image"></a></td>
       <td>
-        <img width="60" height="60" src="{{url('/uploads/'.$value->image)}}" alt="image"></td>
-      <td>
-
-        <a class="btn btn-primary">show</a>
-        <a class="btn btn-danger"  href="{{route('package.delete', $value->id)}}">delete</a>
-        <a  class="btn btn-success">edit</a>
-     </td>
+        
+        <a class="btn btn-primary" href="">show</a>
+        <a class="btn btn-success" href="{{route('food.edit',$value->id)}}">edit</a>
+        <a class="btn btn-danger" href="{{route('food.delete',$value->id)}}">Delete</a>
+        
+      </td>
     </tr>
     @endforeach
-
 
   </tbody>
 </table>

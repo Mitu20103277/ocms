@@ -9,6 +9,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\FrontendpackageController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WebController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -32,26 +33,56 @@ Route::get('/',[WebController::class,'home'])->name('home');
 Route::get('/search-foods',[WebController::class,'search'])->name('food.search');
 
 
-
+Route::get('/category',[WebController::class,'category'])->name('home.category');
 Route::get('/foods',[WebController::class,'food'])->name('home.food');
 Route::get('/singlefoodview/{id}',[WebController::class,'singlefoodview'])->name('single.food');
 Route::get('/singlepackages/{id}',[WebController::class,'singlepackage'])->name('single.package');
 Route::get('/package',[WebController::class,'package'])->name('home.package');
 
-Route::get('/cart-view',[CartController::class,'viewCart'])->name('cart.view');
-Route::get('/add-to-cart/{food_id}',[CartController::class,'addToCart'])->name('add.toCart');
-Route::get('/checkout',[CartController::class,'checkout'])->name('checkout');
 
-Route::post('/order-place',[OrderController::class, 'orderPlace'])->name('order.place');
+
+
+
+
 
 Route::get('/register',[CustomerController::class,'registerPage'])->name('customer.register');
 Route::post('/do-register',[CustomerController::class,'doregister'])->name('customer.doregister');
 
 Route::get('/login',[CustomerController::class,'loginPage'])->name('customer.login');
 Route::post('/do-login',[CustomerController::class,'login'])->name('customer.dologin');
+
+Route::get('/cart-view',[CartController::class,'viewCart'])->name('cart.view');
+Route::get('/add-to-cart/{food_id}',[CartController::class,'addToCart'])->name('add.toCart');
+
+Route::get('/add-package-to-cart/{package_id}',[CartController::class,'addPackageCartItem'])->name('add.cartItem');
+
+Route::group(['prefix'=>'customer'], function () {
+Route::group(['middleware'=> 'customer' ], function () {
+
 Route::get('/profile', [CustomerController::class,'profile'])->name('profile.view');
 
+Route::get('/checkout',[CartController::class,'checkout'])->name('checkout');
+
 Route::get('/logout',[CustomerController::class,'logout'])->name('customer.logout');
+Route::post('/order-place',[OrderController::class, 'orderPlace'])->name('order.place');
+
+  // SSLCOMMERZ Start
+  Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
+  Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+  
+  Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+  Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+  
+  Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+  Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+  Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+  
+  Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+  //SSLCOMMERZ END
+  
+});
+});
+
 
 Route::get('/admin/login',[UserController::class,'loginform'])->name('admin.login');
 Route::post('/admin/do-login',[UserController::class,'loginpost'])->name('login.post');
@@ -109,9 +140,9 @@ Route::post('/admin/do-login',[UserController::class,'loginpost'])->name('login.
     
     
     Route::get('/order/list',[OrderController::class,'list'])->name('order.list');
-    Route::get('/order/create',[OrderController::class,'create'])->name('order.create');
-    Route::post('/order/store',[OrderController::class,'store'])->name('order.store');
-    
+    Route::get('/order/details/{id}',[OrderController::class,'orderDetails'])->name('order.details');
+     
+
     Route::get('/customer/list',[CustomerController::class,'customerlist'])->name('customer.list');
     
     

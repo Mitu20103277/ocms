@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Food;
 use App\Models\Package;
 use Illuminate\Http\Request;
 
 class PackageController extends Controller
 {
     public function list(){
-        $packages=Package::all();
-          
+        
+        $packages=Food::where("type",'packages')->get();
+        //   dd($packages);
         return view('Admin.pages.package.list',compact('packages'));
     }
     public function create(){

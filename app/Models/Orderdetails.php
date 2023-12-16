@@ -9,4 +9,7 @@ class Orderdetails extends Model
 {
     use HasFactory;
     protected $guarded=[];
+    public function food(){
+        return $this->hasMany(Food::class, "food_id");
+    }
 }

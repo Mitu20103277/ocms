@@ -10,6 +10,15 @@
     <input type="text" class="form-control" id="food" name="food_name">
     </div>
     <div class="form-group">
+    <label for=""> select type</label>
+    <select required class="form-control" id="" placeholder=""  name="type">
+      <option value="item">item</option>
+      <option value="packages">package</option>
+    </select>
+     </div>
+
+
+    <div class="form-group">
     <label for="exampleInputEmail1">category</label><br>
    <select name="category_id" class="form-control"  id="">
     @foreach($categories as $category)
@@ -17,6 +26,7 @@
     @endforeach
    </select>
     </div>
+
   <div class="form-group">
     <label for="">price</label><br>
     <input type="text" class="form-control" id="category" name="enter_price">

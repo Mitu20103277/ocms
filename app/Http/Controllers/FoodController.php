@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Food;
+use App\Models\Package;
 use Illuminate\Http\Request;
 
 class FoodController extends Controller
 {
   public function foodList()
   {
+    
+    $type=Food::where('type','Packages')->get();
     $foods=Food::with('category')->get();
+
      
   return view('Admin.pages.food.list', compact('foods'));
   }
@@ -45,9 +49,11 @@ public function foodstore(request $request){
 
 
       Food::create([
+
         'food_name'=>$request->food_name,
         'category_id'=>$request->category_id,
          'price'=>$request->enter_price,
+         'type'=> $request->type,
          'image'=>$fileName
     ]);
     return redirect()->route('food.list');

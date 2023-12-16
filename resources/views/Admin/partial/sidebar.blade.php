@@ -28,9 +28,9 @@
           <i class="bi bi-layout-text-window-reverse"></i><span>order</span>
         </a>
       </li><!-- End Tables Nav --><li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#tables-nav" href="#">
+       {{-- <a class="nav-link collapsed" data-bs-target="#tables-nav" href="{{route('order.details')}}">
           <i class="bi bi-layout-text-window-reverse"></i><span> order details</span>
-        </a>
+        </a> --}}
       </li><!-- End Tables Nav --><li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#tables-nav" href="#">
           <i class="bi bi-layout-text-window-reverse"></i><span>schedule</span>

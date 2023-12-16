@@ -11,6 +11,7 @@
       <th scope="col">Id</th>
       <th scope="col">Food Name</th>
       <th scope="col">Category</th>
+      <th scope="col">Type</th>
       <th scope="col">price</th>
       <th scope="col">Image</th>
       <th scope="col">Action</th>
@@ -23,6 +24,7 @@
       <td> {{$id+1}}</td>
       <td>{{$value->food_name}}</td>
       <td>{{$value->category->category_name}}</td>
+      <td>{{$value->type}}</td>
       <td>{{$value->price}}</td>
       <td> 
         <a href=""><img width="60" height="60" src="{{url('/uploads/'.$value->image)}}" alt="image"></a></td>

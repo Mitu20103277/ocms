@@ -12,21 +12,38 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="{{route('home')}}">Home</a></li>
-          <li><a href="">Categories</a></li>
-          <li><a href="">Foods</a></li>
-          <li><a href="{{route('home.package')}}">Packages</a></li>
+                      <li><a href="{{route('home')}}">Home</a></li>
+         
+          
 
-          
-          
-        </ul>
-      </nav><!-- .navbar -->
-      
-    </div>
-    <div class="ùser">
-    <a class="btn btn-outline-dark" href="{{route('cart.view')}}">
-                            <i class="bi-cart-fill me-1"></i>
-                            Cart
+        
+        
+            
+                       
+                  
+                       <li><a href="">Foods</a></li>
+                        <li><a href="{{route('home.package')}}">Packages</a></li>
+                      
+                         <li><a href="{{route('home.category')}}">category
+                         <ul class="dropdown-content">
+                         <!-- <li><a href="">Dessert</a></li> 
+                          <li><a href="">curry</a></li>
+                          <li><a href="">meat</a></li>
+                          </ul> </a>  -->
+                        </ul>
+                        </li>
+                        
+                        </ul>
+                          </nav><!-- .navbar -->
+        
+           
+    
+
+                          </div>
+                             <div class="ùser">
+                            <a class="btn btn-outline-dark" href="{{route('cart.view')}}">
+                            <i class="bi-cart-fill me-1"> Cart</i>
+                                                           
                             <span class="badge bg-dark text-white ms-1 rounded-pill">
                                 @if(session()->has('vcart'))
                                     {{ count(session()->get('vcart')) }}
@@ -34,11 +51,9 @@
                                 0
                                 @endif
                             </span>
-                        </a>
-      
+                           </a>
+                        
 
-      
-      
                               @if (auth('customer')->user())   
 
                              <li style="list-style: none; margin-right: 20px;">{{auth('customer')->user()->full_name}}</li>

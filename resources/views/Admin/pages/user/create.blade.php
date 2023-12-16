@@ -16,6 +16,7 @@
     <label for="">  Select Role</label>
     <select required class="form-control" id="" placeholder="role "  name="role">
       <option value="manager">manager</option>
+      <option value="manager">Admin</option>
     </select>
      </div>
 

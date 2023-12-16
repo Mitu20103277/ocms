@@ -4,8 +4,10 @@ namespace App\Providers;
 
 use App\Models\Food;
 use App\Models\Package;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -21,9 +23,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $foods=Food::all();
-        view::share('foods',$foods);
-        $packages=Package::all();
-        view::share('packages', $packages);
+        if (Schema::hasTable('foods')) {
+            $foods = Food::all();
+            view::share('foods', $foods);
+        }
+        if (Schema::hasTable('Packages')) {
+            $packages = Package::all();
+            view::share('packages', $packages);
+        }
     }
 }
