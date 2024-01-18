@@ -4,7 +4,7 @@
    <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-lg-0">
+      <a href="{{route('home')}}" class="logo d-flex align-items-center me-auto me-lg-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
         <h1>Catering Management Systems</h1>
@@ -12,26 +12,44 @@
 
       <nav id="navbar" class="navbar">
         <ul>
+
+                     <li><form action="{{route('food.search')}}" method="get">
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div>
+
+                            <input required type="text" class="form-control" placeholder="Search..." name="search">
+                          </div>
+                          <div>
+
+                            <button type="submit" class="btn btn-success">Search</button>
+                          </div>
+                         </form></li>
+
                       <li><a href="{{route('home')}}">Home</a></li>
          
           
-
-        
+                      
+                      <li><a href="{{route('food.service')}}">Service</a></li>
         
             
                        
                   
-                       <li><a href="">Foods</a></li>
+                       <li><a href="{{route('home.food')}}">Foods</a></li>
                         <li><a href="{{route('home.package')}}">Packages</a></li>
-                      
-                         <li><a href="{{route('home.category')}}">category
-                         <ul class="dropdown-content">
-                         <!-- <li><a href="">Dessert</a></li> 
-                          <li><a href="">curry</a></li>
-                          <li><a href="">meat</a></li>
-                          </ul> </a>  -->
-                        </ul>
+
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="{{route('home.category')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                               @foreach($headerCategories as $category)
+                               <li>
+                                    <a class="dropdown-item" href="  {{ route('foods.under.category',$category->id) }}">{{$category->category_name}}</a>
+                                </li>
+                              @endforeach
+                            </ul>
                         </li>
+                      
+                        
                         
                         </ul>
                           </nav><!-- .navbar -->

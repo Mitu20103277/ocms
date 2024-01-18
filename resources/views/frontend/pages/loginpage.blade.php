@@ -1,11 +1,11 @@
 @extends('frontend.master')
 
 @section('content')
-
+<br>
 <div class="container mt-3 mb-3">
     <div class="row">
         <div class="col-md-6 offset-md-3">
-            <div class="card mt-5 p-3">
+            <div class="card mt-5 p-3 mb-5">
 
                 <div class="card-body ">
                     <h3 class="text-center"><strong>Login Form</strong></h3>

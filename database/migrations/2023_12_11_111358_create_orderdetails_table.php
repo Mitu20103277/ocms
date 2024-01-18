@@ -18,6 +18,7 @@ return new class extends Migration
              $table->string('food_name');
             $table->integer('quantity');
             $table->double('subtotal');
+            $table->double('total_price');
             $table->timestamps();
         });
     }

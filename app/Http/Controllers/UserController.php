@@ -108,6 +108,14 @@ class UserController extends Controller
 
 
    }
+
+
+   public function delete($id){
+      User::destroy($id);
+      toastr()->error('user succssfully deleted.');
+      return redirect()->back();
+
+   }
 }
 
    

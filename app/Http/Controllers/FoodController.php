@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Food;
+use Brian2694\Toastr\Facades\Toastr;
 use App\Models\Package;
 use Illuminate\Http\Request;
 
@@ -47,15 +48,18 @@ public function foodstore(request $request){
 
     }
 
-
-      Food::create([
-
+        
+     $food = Food::create([
+            
         'food_name'=>$request->food_name,
         'category_id'=>$request->category_id,
          'price'=>$request->enter_price,
          'type'=> $request->type,
-         'image'=>$fileName
+         'image'=>$fileName,
+         'quantity'=>$request->quantity,
+         'total'=>$request->quantity*$request->enter_price,
     ]);
+    // dd($food);
     return redirect()->route('food.list');
 
 
@@ -84,15 +88,22 @@ public function foodstore(request $request){
       'food_name'=>$request->food_name,
      'category_id'=>$request->category_id,
       'price'=>$request->enter_price,
-      'image'=>$fileName
+      'image'=>$fileName,
+      'quantity'=>$request->quantity,
+      'total'=>$request->quantity*$request->enter_price,
+
      ]);
+ 
     }
+ 
   }
   public function show($id){
-    dd($id);
+    // dd($id);
   }
   public function delete($id){
     Food::find($id)->delete();
+    toastr()->error('food succssfully deleted.');
+    return redirect()->back();
   }
 
 

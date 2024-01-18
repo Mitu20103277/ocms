@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
 use App\Models\Food;
 use App\Models\Package;
 use Illuminate\Support\Facades\Schema;
@@ -31,5 +32,11 @@ class AppServiceProvider extends ServiceProvider
             $packages = Package::all();
             view::share('packages', $packages);
         }
-    }
+
+         if(Schema::hasTable('categories')) {
+
+            $categories = Category::all();
+            view::share('headerCategories', $categories);
+        }
+}
 }

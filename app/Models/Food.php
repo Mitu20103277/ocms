@@ -9,6 +9,8 @@ class Food extends Model
 {
     use HasFactory;
     protected $table="foods";
+
+    // protected $filable = []
     protected $guarded=[];
     public function category()
     {

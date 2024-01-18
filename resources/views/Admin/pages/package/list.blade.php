@@ -2,7 +2,7 @@
 @section('content')
 
 
-<a class="btn btn-primary" href="{{ route('food.create') }}">Create new package</a>
+<!-- <a class="btn btn-primary" href="{{ route('package.create') }}">Create new package</a> -->
 <table class="table">
 
   <thead>
@@ -29,7 +29,7 @@
         <a href=""><img width="60" height="60" src="{{url('/uploads/'.$value->image)}}" alt="image"></a></td>
       <td>
         
-        <a class="btn btn-primary" href="">show</a>
+        
         <a class="btn btn-success" href="{{route('food.edit',$value->id)}}">edit</a>
         <a class="btn btn-danger" href="{{route('food.delete',$value->id)}}">Delete</a>
         

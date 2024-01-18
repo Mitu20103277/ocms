@@ -6,6 +6,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ReportController;
+
 use App\Http\Controllers\FrontendpackageController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\OrderController;
@@ -32,11 +34,19 @@ Route::get('/',[WebController::class,'home'])->name('home');
 
 Route::get('/search-foods',[WebController::class,'search'])->name('food.search');
 
+Route::get('/refunds-policy',[WebController::class,'refundspolicy'])->name('refund.policy');
+
+
+Route::get('/services',[WebController::class,'service'])->name('food.service');
+
+
 
 Route::get('/category',[WebController::class,'category'])->name('home.category');
 Route::get('/foods',[WebController::class,'food'])->name('home.food');
+
 Route::get('/singlefoodview/{id}',[WebController::class,'singlefoodview'])->name('single.food');
 Route::get('/singlepackages/{id}',[WebController::class,'singlepackage'])->name('single.package');
+Route::get('/package/details/{id}',[WebController::class,'details'])->name('details');
 Route::get('/package',[WebController::class,'package'])->name('home.package');
 
 
@@ -53,13 +63,29 @@ Route::post('/do-login',[CustomerController::class,'login'])->name('customer.dol
 
 Route::get('/cart-view',[CartController::class,'viewCart'])->name('cart.view');
 Route::get('/add-to-cart/{food_id}',[CartController::class,'addToCart'])->name('add.toCart');
+Route::get('/remove-from-cart/{cart_id}',[CartController::class,'removeFromCart'])->name('removeFrom.cart');
+
 
 Route::get('/add-package-to-cart/{package_id}',[CartController::class,'addPackageCartItem'])->name('add.cartItem');
+
+
+Route::get('/food-under-category/{cat_id}',[WebController::class,'foodsUnderCategory'])->name('foods.under.category');
+
+
+
+
+
 
 Route::group(['prefix'=>'customer'], function () {
 Route::group(['middleware'=> 'customer' ], function () {
 
 Route::get('/profile', [CustomerController::class,'profile'])->name('profile.view');
+
+Route::get('/order/details/{id}', [WebController::class,'orderdetails'])->name('user.order.details');
+Route::get('/order/print', [WebController::class,'print'])->name('orderDetails.print');
+
+
+
 
 Route::get('/checkout',[CartController::class,'checkout'])->name('checkout');
 
@@ -88,7 +114,7 @@ Route::get('/admin/login',[UserController::class,'loginform'])->name('admin.logi
 Route::post('/admin/do-login',[UserController::class,'loginpost'])->name('login.post');
 
 
-   Route::group(['prefix'=> 'amdin'], function () {
+   Route::group(['prefix'=> 'admin'], function () {
 
   
 
@@ -96,11 +122,12 @@ Route::post('/admin/do-login',[UserController::class,'loginpost'])->name('login.
 
     
     Route::get('/logout',[UserController::class,'logout'])->name('admin.logout');
-    Route::get('/',[HomeController::class,'home'])->name('dashboard');
+    Route::get('/dashboard',[HomeController::class,'home'])->name('dashboard');
     
 
     
     Route::get('/users',[UserController::class,'list'])->name('users.list');
+    Route::get('/user/delete/{id}',[UserController::class,'delete'])->name('user.delete');
     Route::get('/users/create',[UserController::class,'createform'])->name('users.create');
     Route::post('/user/store',[UserController::class,'store'])->name('user.store');
     Route::get('/user/edit/{id}',[UserController::class,'edit'])->name('user.edit');
@@ -131,6 +158,8 @@ Route::post('/admin/do-login',[UserController::class,'loginpost'])->name('login.
     Route::get('/food/delete/{id}',[FoodController::class,'delete'])->name('food.delete');
 
 
+    
+
 
     
     Route::get('/package/list',[PackageController::class,'List'])->name('package.list');
@@ -139,12 +168,18 @@ Route::post('/admin/do-login',[UserController::class,'loginpost'])->name('login.
     Route::post('/package/store',[PackageController::class,'store'])->name('package.store');
     
     
-    Route::get('/order/list',[OrderController::class,'list'])->name('order.list');
+    Route::get('/order/list/',[OrderController::class,'list'])->name('order.list');
     Route::get('/order/details/{id}',[OrderController::class,'orderDetails'])->name('order.details');
-     
+     Route::get('/order/delete/{id}',[OrderController::class,'delete'])->name('order.delete');
 
     Route::get('/customer/list',[CustomerController::class,'customerlist'])->name('customer.list');
-    
+       
+    Route::controller(ReportController::class)->group(function(){
+      Route::get('report/report','Report')->name('report');
+      Route::get('report/search','ReportSearch')->name('report.search');
+     
+     });
+   
     
     });
 

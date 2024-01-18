@@ -2,7 +2,6 @@
 
 @section('content')
 
-<h2>Search result for : {{ request()->search }} found {{$foods->count()}} $foods.</h2>
 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
 @if($foods->count()>0)
@@ -46,7 +45,7 @@
 
                 @else
 
-                    <h1>No food found.</h1>
+                    <h1 class="mt-5">No food found.</h1>
                 @endif
 
 

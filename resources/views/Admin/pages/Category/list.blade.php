@@ -23,7 +23,7 @@
       <td>{{$value->description}}</td> 
       
      <td>
-      <a class="btn btn-primary" >show</a>
+     
       <a class="btn btn-success"href="{{route('category.edit',$value->id)}}">Edit</a>
       <a class="btn btn-danger" href="{{route('category.delete',$value->id)}}">Delete</a>
      </td>

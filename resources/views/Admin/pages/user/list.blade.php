@@ -30,15 +30,15 @@
       <td>
        
           <a class="btn btn-primary" href="{{ route('user.edit',$singleuser->id) }}">Edit</a>
-          <a class="btn btn-success">view</a>
-          <a class="btn btn-danger"  herf="">Delete</a>
+          <a class="btn btn-success"  href="">view</a>
+          <a class="btn btn-danger"  herf="{{ route('user.delete',$singleuser->id)}}">Delete</a>
       </td>
 
     </tr>
 
    @endforeach
-
+   </tbody>
      
-</tbody>
+</table> 
 
 @endsection

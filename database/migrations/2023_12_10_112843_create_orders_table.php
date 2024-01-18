@@ -16,12 +16,14 @@ return new class extends Migration
             $table->foreignId('customer_id')->constrained('customers');
             $table->string('status')->default('pending');
             $table->double('total_price')->default(0.0);
-            $table->string('payment_method')->default('cod');
+            $table->string('payment_method')->default('ssl-commerz');
             $table->string('address');
             $table->string('receiver_mobile');
             $table->string('receiver_name');
             $table->string('receiver_email')->nullable();
             $table->text('order_note')->nullable();
+            $table->string('transaction_id')->unique();
+            $table->string('payment_status');
             $table->timestamps();
         });
     }

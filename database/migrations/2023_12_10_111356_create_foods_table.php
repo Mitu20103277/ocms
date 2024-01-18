@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('image');
 
             $table->foreignId('type');
+            $table->integer('quantity')->nullable();
+            $table->integer('total')->nullable();
             $table->timestamps();
         });
     }

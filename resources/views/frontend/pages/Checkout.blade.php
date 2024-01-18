@@ -1,19 +1,24 @@
 @extends('frontend.master')
 
 @section('content')
-
+<br>
+<br>
+<br>
+<br>
 <div class="container wrapper">
     <form action="{{route('order.place')}}" method="post">
         @csrf
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 mt-5">
 
         </div>
 
         <div class="col-md-6 col-sm-6 col-xs-12 col-md-pull-6 col-sm-pull-6">
             <!--SHIPPING METHOD-->
             <div class="panel panel-info">
-                <div class="panel-heading">Address</div>
+                <div class="panel-heading">
+                    
+                </div>
                 <div class="panel-body">
                     <div class="form-group">
                         <div class="col-md-12">

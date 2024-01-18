@@ -31,6 +31,11 @@
     <label for="">price</label><br>
     <input type="text" class="form-control" id="category" name="enter_price">
   </div>
+  <div class="form-group">
+    <label for="">quantity</label><br>
+    <input type="number" class="form-control" id="category" name="quantity">
+  </div>
+  
 <div class="form-group">
     <label for="">image</label><br>
     <input type="file" class="form-control" name="enter_image">

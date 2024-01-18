@@ -1,6 +1,9 @@
 @extends('Admin.master')
 @section('content')
-
+<div class="mb-3">
+        <button class="btn btn-success" onclick="printContent('printDiv')">Print</button>
+     </div>
+     <div id="printDiv">
 <table class="table">
 
   <thead>
@@ -32,7 +35,15 @@
 
 
 
-
+<script type="text/javascript">
+        function printContent(el) {
+            var restorepage = $('body').html();
+            var printcontent = $('#' + el).clone();
+            $('body').empty().html(printcontent);
+            window.print();
+            $('body').html(restorepage);
+        }
+    </script>
 
 
 

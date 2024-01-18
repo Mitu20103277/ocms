@@ -1,7 +1,9 @@
 @extends('Admin.master')
 @section('content')
-
-
+     <div class="mb-3">
+        <button class="btn btn-success" onclick="printContent('printDiv')">Print</button>
+     </div>
+     <div id="printDiv">
 <table class="table">
 
   <thead>
@@ -15,6 +17,7 @@
       <th scope="col">Receiver_mobile</th>
       <th scope="col"> Receiver_name</th>
       <th scope="col">Receiver_email</th>
+      <th scope="col">Date$Time</th>
       <th scope="col">Action</th>
       
     </tr>
@@ -32,10 +35,10 @@
       <td>{{$value->receiver_mobile}}</td>
       <td>{{$value->receiver_name}}</td>
       <td>{{$value->receiver_email}}</td>
-
+      <td>{{$value->created_at}}</td>
       <td>
         <a href="{{route('order.details', $value->id)}}" class="btn btn-primary">view</a>
-        <a href="" class="btn btn-danger">Delete</a>
+        <a href="{{route('order.delete' , $value->id)}}" class="btn btn-danger">Delete</a>
       </td>
 
     </tr>
@@ -43,4 +46,14 @@
    @endforeach
   </tbody>
 </table>
+</div>
+<script type="text/javascript">
+        function printContent(el) {
+            var restorepage = $('body').html();
+            var printcontent = $('#' + el).clone();
+            $('body').empty().html(printcontent);
+            window.print();
+            $('body').html(restorepage);
+        }
+    </script>
 @endsection

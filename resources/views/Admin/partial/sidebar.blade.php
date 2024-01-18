@@ -31,19 +31,7 @@
        {{-- <a class="nav-link collapsed" data-bs-target="#tables-nav" href="{{route('order.details')}}">
           <i class="bi bi-layout-text-window-reverse"></i><span> order details</span>
         </a> --}}
-      </li><!-- End Tables Nav --><li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#tables-nav" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>schedule</span>
-        </a>
-        <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#tables-nav" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>payment</span>
-        </a>
-        <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#tables-nav" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Business settings</span>
-        </a>
-       
+      </li><!-- End Tables Nav -->
         <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#tables-nav" href="{{route('users.list')}}">
           <i class="bi bi-layout-text-window-reverse"></i><span>user</span>
@@ -52,6 +40,11 @@
         <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#tables-nav" href="{{route('customer.list')}}">
           <i class="bi bi-layout-text-window-reverse"></i><span>Customer</span>
+        </a>
+
+        <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" href="{{route('report')}}">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Report generation</span>
         </a>
     </ul>
 

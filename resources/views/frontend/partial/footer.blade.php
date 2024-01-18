@@ -5,7 +5,7 @@
 
 <footer id="footer" class="footer">
 
-    <div class="container">
+    <div class="container" style="margin-top: 10px;">
       <div class="row gy-3">
         <div class="col-lg-3 col-md-6 d-flex">
           <i class="bi bi-geo-alt icon"></i>
@@ -13,7 +13,7 @@
             <h4>Address</h4>
             <p>
               A108 Adam Street <br>
-              New York, NY 535022 - US<br>
+              Bangladesh, NY 535022 - US<br>
             </p>
           </div>
 

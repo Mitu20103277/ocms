@@ -65,7 +65,8 @@ public function update(Request $request, $id){
        ]);
        Toastr::success('Category','category successfully updated.');
        return redirect()->route('category.list');
-}
+       return redirect()->back();
+      }
     public function delete($id){
       Category::destroy($id);
       toastr()->error('category succssfully deleted.');

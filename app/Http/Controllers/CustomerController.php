@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\Order;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -65,12 +66,28 @@ class CustomerController extends Controller
         return redirect()->back();
     }
      public function profile(){
-          return view('frontend.pages.profile');
+         $order=Order::where('customer_id',auth()->guard('customer')->user()->id)->orderBy('id','desc')->get();
+          return view('frontend.pages.profile' ,compact('order') );
 
 
      }
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
     public function logout(){
         Auth::guard('customer')->logout();
+        session()->forget('vcart');
         Toastr::success('successfully logout','Customer');
         return redirect()->route('home');
     }

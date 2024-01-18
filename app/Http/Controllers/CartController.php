@@ -40,6 +40,7 @@ class CartController extends Controller
                     'name'=>$food->food_name,
                     'price'=>$food->price,
                     'quantity'=>1,
+                    'image'=>$food->image,
                     'subtotal'=>1 * $food->price,
             ];
 
@@ -58,6 +59,7 @@ class CartController extends Controller
                     'name'=>$food->food_name,
                     'price'=>$food->price,
                     'quantity'=>1,
+                    'image'=>$food->image,
                     'subtotal'=>1 * $food->price,
             ];
 
@@ -71,6 +73,17 @@ class CartController extends Controller
 
         return view('frontend.pages.cart');
     }
+
+    public function removeFromCart($id)
+    {
+
+
+        $cart=session()->get('vcart');
+        unset($cart[$id]);
+        session()->put('vcart',$cart);
+        Toastr::success("product remove from cart");
+        return redirect()->back();
+    }
     public function checkout()
     {
         
@@ -80,31 +93,35 @@ class CartController extends Controller
      
    
     
-      public function addPackageCartItem($pId)
+      public function addPackageCartItem($fId)
     {
-        $package=Package::find($pId);
+        $package=Food::find($fId);
+        // dd($package);
 
         $cart=session()->get('vcart');
         if($cart){//not empty
 
-            if(array_key_exists($pId,$cart)){//yes
+            if(array_key_exists($fId,$cart)){//yes
                 //qty update
-                $cart[$pId]['quantity']=$cart[$pId]['quantity'] + 1;
-                $cart[$pId]['subtotal']=$cart[$pId]['quantity'] * $cart[$pId]['price'];
+                $cart[$fId]['quantity']=$cart[$fId]['quantity'] + 1;
+                $cart[$fId]['subtotal']=$cart[$fId]['quantity'] * $cart[$fId]['price'];
 
             session()->put('vcart',$cart);
             Toastr::success('package added to cart successfully . ');
             return redirect()->back();
 
 
-            }else{//no
-                //add to cart
-                $cart[$pId]=[
-                    'id'=>$pId,
-                    'name'=>$package->name,
+            }else{
+             
+                $cart[$fId]=[
+                    'id'=>$fId,
+                    'name'=>$package->food_name,
                     'price'=>$package->price,
                     'quantity'=>1,
+                    'image'=>$package->image,
                     'subtotal'=>1 * $package->price,
+
+          
             ];
 
             session()->put('vcart',$cart);
@@ -117,11 +134,12 @@ class CartController extends Controller
 
         }else{//empty
             //add to cart
-            $newCart[$pId]=[
-                    'id'=>$pId,
-                    'name'=>$package->name,
+            $newCart[$fId]=[
+                    'id'=>$fId,
+                    'name'=>$package->food_name,
                     'price'=>$package->price,
                     'quantity'=>1,
+                    'image'=>$package->image,
                     'subtotal'=>1 * $package->price,
             ];
 
